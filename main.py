@@ -13,7 +13,7 @@ from sqlalchemy.orm import Session
 app = FastAPI()
 
 
-# this will create all below mentioned
+# this will create all below mentioned ----------------
 models.Base.metadata.create_all(engine)
 
 
@@ -41,7 +41,7 @@ class User(BaseModel):
     
     
     
-# Create new user
+# Create new user ----------------------
 
 @app.post("/create-user")
 def createUser(request:User,db:Session=Depends(get_db)):
@@ -58,7 +58,7 @@ def createUser(request:User,db:Session=Depends(get_db)):
 
 
 
-# Get all users
+# Get all users ------------------
 
 @app.get("/users")
 def getAllUsers(db:Session=Depends(get_db)):
@@ -68,7 +68,7 @@ def getAllUsers(db:Session=Depends(get_db)):
 
 
 
-# Delete user
+# Delete user -------------------
 
 
 @app.delete('/user/{id}',status_code=status.HTTP_200_OK)
@@ -80,7 +80,7 @@ def delete_user(id, db:Session=Depends(get_db)):
     
 
 
-# Update user
+# Update user -------------------
 
 @app.put('/{id}', status_code=status.HTTP_200_OK)
 def update_user(id, request: schemas.User, db: Session = Depends(get_db)):
